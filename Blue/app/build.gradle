@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -32,10 +33,17 @@ android {
         targetCompatibility = 1.8
     }
 
+    androidExtensions {
+        experimental = true
+    }
+
 }
 
 dependencies {
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
     def room_version = "2.2.5"
     def paging_version = "2.1.2"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -52,9 +60,6 @@ dependencies {
     api 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 //    api 'androidx.paging:paging-runtime:2.1.1'
 //    api 'androidx.lifecycle:lifecycle-viewmodel-savedstate:1.0.0'
-
-    api 'io.reactivex.rxjava2:rxjava:2.2.2'
-    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
 
 //    annotationProcessor "androidx.room:room-compiler:$room_version"
 //    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
@@ -73,6 +78,21 @@ dependencies {
 
     implementation 'com.google.code.gson:gson:2.8.5'
 
+
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'//导入retrofit
+    //下面两个是RxJava 和 RxAndroid
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.x.y'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'//转换器，请求结果转换成Model
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'//配合Rxjava 使用
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'io.supercharge:shimmerlayout:2.1.0'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+//    implementation files('libs/classes.jar')
+
+    implementation 'com.android.volley:volley:1.1.0'
 
 }
 repositories {
